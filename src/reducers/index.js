@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 const songsReducer = () => {
   return [
     { title: 'Nightdrive with You', artist: 'Anoraak', album: 'Nightdrive with You', duration: '5:28' },
@@ -9,9 +11,15 @@ const songsReducer = () => {
 };
 
 const selectedSongReducer = (selectedSong = null, action) => {
-  if(action.type === 'SONG_SELECTED') {
+  if (action.type === 'SONG_SELECTED') {
     return action.payload;
   } else {
     return selectedSong;
   }
 }
+
+export default combineReducers({
+  songs: songsReducer,
+  selectedSong: selectedSongReducer
+})
+
